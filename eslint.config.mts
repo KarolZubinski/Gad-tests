@@ -19,7 +19,7 @@ export default [
   },
   {
     rules: {
-      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'off',
     },
   },
   eslintPluginPlaywright.configs['flat/recommended'],
