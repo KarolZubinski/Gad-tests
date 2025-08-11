@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write .",
+    "format:check": "npx prettier . --check '!**.ts'",
     "lint": "npx eslint .",
     "prepare": "husky install",
     "test": "npx playwright test",
