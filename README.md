@@ -12,7 +12,7 @@ Follow instructions in app README
 
 - VS Code
 - Git
-- Node.js (version >17)
+- Node.js (version >16)
 
 ### Installation and setup
 
