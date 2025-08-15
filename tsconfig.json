@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "strict": true,
     "module": "CommonJS",
-    "sourceMap": true
-  }
+    "strict": true,
+    "sourceMap": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "exclude": ["node_modules", "dist"]
 }
