@@ -15,6 +15,5 @@ test('articles page title', async ({ page }) => {
 
   //Assert
   await page.waitForLoadState();
-  await expect(page).toHaveTitle(/GAD/);
+  await expect(page).toHaveTitle(/Articles/);
 });
-
