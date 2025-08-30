@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('home page title', async ({ page }) => {
   //Act
-  await page.goto('http://localhost:3000/');
+  await page.goto('');
 
   //Assert
   await page.waitForLoadState();
@@ -11,7 +11,7 @@ test('home page title', async ({ page }) => {
 
 test('articles page title', async ({ page }) => {
   //Act
-  await page.goto('http://localhost:3000/articles.html');
+  await page.goto('/articles.html');
 
   //Assert
   await page.waitForLoadState();
