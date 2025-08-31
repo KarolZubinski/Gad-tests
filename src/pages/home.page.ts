@@ -6,4 +6,8 @@ export class HomePage {
   async goto(): Promise<void> {
     await this.page.goto('');
   }
+
+  async title(): Promise<string> {
+    return this.page.title();
+  }
 }

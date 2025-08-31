@@ -1,12 +1,16 @@
+import { HomePage } from '../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
 test('home page title', async ({ page }) => {
+  //Arrange
+  const homePage = new HomePage(page);
   //Act
-  await page.goto('');
+  await homePage.goto();
 
   //Assert
-  await page.waitForLoadState();
-  await expect(page).toHaveTitle(/GAD/);
+  const title = await homePage.title();
+  expect(title).toContain('GAD');
+  //await page.waitForLoadState();
 });
 
 test('articles page title', async ({ page }) => {
@@ -16,4 +20,9 @@ test('articles page title', async ({ page }) => {
   //Assert
   await page.waitForLoadState();
   await expect(page).toHaveTitle(/Articles/);
+});
+
+test('home page title simple', async ({ page }) => {
+  //Act
+  await page.goto('');
 });
