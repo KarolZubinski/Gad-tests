@@ -1,10 +1,10 @@
 import { Page } from '@playwright/test';
 
-export class HomePage {
+export class ArticlesPage {
   constructor(private page: Page) {}
 
   async goto(): Promise<void> {
-    await this.page.goto('');
+    await this.page.goto('/articles.html');
   }
 
   async title(): Promise<string> {
