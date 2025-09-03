@@ -3,46 +3,48 @@ import { CommentsPage } from '../src/pages/comments.page';
 import { HomePage } from '../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
-test('home page title', async ({ page }) => {
-  //Arrange
-  const homePage = new HomePage(page);
+test.describe('Verify service main pages', () => {
+  test('home page title', async ({ page }) => {
+    //Arrange
+    const homePage = new HomePage(page);
 
-  //Act
-  await homePage.goto();
+    //Act
+    await homePage.goto();
 
-  //Assert
-  const title = await homePage.title();
-  expect(title).toContain('GAD');
-  //await page.waitForLoadState();
-});
+    //Assert
+    const title = await homePage.title();
+    expect(title).toContain('GAD');
+    //await page.waitForLoadState();
+  });
 
-test('articles page title', async ({ page }) => {
-  //Arrange
-  const articlesPage = new ArticlesPage(page);
+  test('articles page title', async ({ page }) => {
+    //Arrange
+    const articlesPage = new ArticlesPage(page);
 
-  //Act
-  await articlesPage.goto();
+    //Act
+    await articlesPage.goto();
 
-  //Assert
-  await page.waitForLoadState();
-  const title = await articlesPage.title();
-  expect(title).toContain('Articles');
-});
+    //Assert
+    await page.waitForLoadState();
+    const title = await articlesPage.title();
+    expect(title).toContain('Articles');
+  });
 
-test('comments page title', async ({ page }) => {
-  //Arrange
-  const commentsPage = new CommentsPage(page);
+  test('comments page title', async ({ page }) => {
+    //Arrange
+    const commentsPage = new CommentsPage(page);
 
-  //Act
-  await commentsPage.goto();
+    //Act
+    await commentsPage.goto();
 
-  //Assert
-  await page.waitForLoadState();
-  const title = await commentsPage.title();
-  expect(title).toContain('Comments');
-});
+    //Assert
+    await page.waitForLoadState();
+    const title = await commentsPage.title();
+    expect(title).toContain('Comments');
+  });
 
-test('home page title simple', async ({ page }) => {
-  //Act
-  await page.goto('');
+  test('home page title simple', async ({ page }) => {
+    //Act
+    await page.goto('');
+  });
 });
