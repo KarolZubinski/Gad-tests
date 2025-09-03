@@ -44,7 +44,7 @@ test.describe('Verify service main pages', () => {
   });
 
   test('home page title simple', async ({ page }) => {
-    //Act
     await page.goto('');
+    await expect(page).toHaveTitle(/GAD/);
   });
 });
