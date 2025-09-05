@@ -4,7 +4,7 @@ import { HomePage } from '../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify service main pages', () => {
-  test('home page title', async ({ page }) => {
+  test('home page title @GAD-R01-01', async ({ page }) => {
     //Arrange
     const homePage = new HomePage(page);
 
