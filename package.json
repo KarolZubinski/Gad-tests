@@ -14,9 +14,7 @@
     "test:ui": "npm run test -- --ui",
     "show-report": "npx playwright show-report",
     "test:grep": "npx playwright test --grep --% \"@GAD-R01-01^|@GAD-R01-02\""
-
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
