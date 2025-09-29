@@ -15,7 +15,7 @@ test.describe('Verify menu main buttons', () => {
       //Act
       await articlesPage.goto();
       const menuComponent = new MainMenuComponent(page);
-      await menuComponent.articlesButton.click();
+      await menuComponent.commentsButton.click();
 
       //Assert
       const title = await commentsPage.title();
@@ -33,8 +33,7 @@ test.describe('Verify menu main buttons', () => {
 
       //Act
       await commentsPage.goto();
-      const menuComponent = new MainMenuComponent(page);
-      await menuComponent.articlesButton.click();
+      await commentsPage.mainMenu.articlesButton.click();
 
       //Assert
       const title = await articlesPage.title();
