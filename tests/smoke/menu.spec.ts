@@ -1,5 +1,6 @@
 import { ArticlesPage } from '../../src/pages/articles.page';
 import { CommentsPage } from '../../src/pages/comments.page';
+import { HomePage } from '../../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify menu main buttons', () => {
@@ -22,7 +23,7 @@ test.describe('Verify menu main buttons', () => {
   );
 
   test(
-    'articles button navigates to comments page',
+    'articles button navigates to articles page',
     { tag: '@GAD-R01-03' },
     async ({ page }) => {
       //Arrange
@@ -36,6 +37,23 @@ test.describe('Verify menu main buttons', () => {
 
       //Assert
       expect(title).toContain('Articles');
+    },
+  );
+  test(
+    'home page button navigates to main page',
+    { tag: '@GAD-R01-03' },
+    async ({ page }) => {
+      //Arrange
+      const articlesPage = new ArticlesPage(page);
+
+      //Act
+      await articlesPage.goto();
+      await articlesPage.mainMenu.homePage.click();
+      const homePage = new HomePage(page);
+      const title = await homePage.title();
+
+      //Assert
+      expect(title).toContain('GAD');
     },
   );
 });
