@@ -12,6 +12,7 @@ test.describe('Verify login', () => {
     //Act
     await loginPage.goto();
     await loginPage.login(userEmail, userPassword);
+
     const welcomePage = new WelcomePage(page);
     const title = await welcomePage.title();
 
