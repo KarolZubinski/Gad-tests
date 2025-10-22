@@ -7,7 +7,7 @@ test.describe('Verify login', () => {
   test('login with correct credentials @GAD_R02_01', async ({ page }) => {
     //Arrange
     const userEmail = testUser1.userEmail as string;
-    const userPassword = 'test1';
+    const userPassword = testUser1.userPassword as string;
     const loginPage = new LoginPage(page);
 
     //Act
