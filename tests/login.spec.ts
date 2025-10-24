@@ -20,4 +20,19 @@ test.describe('Verify login', () => {
     //Assert
     expect(title).toContain('Welcome');
   });
+
+  test('reject login with incorrect password @GAD_R02_01', async ({ page }) => {
+    //Arrange
+    const userEmail = testUser1.userEmail as string;
+    const userPassword = 'incorrectPassword';
+    const loginPage = new LoginPage(page);
+
+    //Act
+    await loginPage.goto();
+    await loginPage.login(userEmail, userPassword);
+
+    //Assert
+    const title = await loginPage.title();
+    expect(title).toContain('Welcome');
+  });
 });
