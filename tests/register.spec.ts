@@ -1,3 +1,4 @@
+import { RegisterPage } from '../src/pages/register.page';
 import { test } from '@playwright/test';
 
 test.describe('Verify register', () => {
@@ -7,13 +8,16 @@ test.describe('Verify register', () => {
     const userLastName = 'Nowak';
     const userEmail = `testowy${Date.now()}@test.test`;
     const userPassword = 'test123';
-    
-    await page.goto('http://localhost:3000/register.html');
-    await page.getByTestId('firstname-input').fill(userFirstName);
-    await page.getByTestId('lastname-input').fill(userLastName);
-    await page.getByTestId('email-input').fill(userEmail);
 
-    await page.getByTestId('password-input').fill(userPassword);
-    await page.getByTestId('register-button').click();
+    const registerPage = new RegisterPage(page);
+
+    //Act
+    await registerPage.goto();
+    await registerPage.register(
+      userFirstName,
+      userLastName,
+      userEmail,
+      userPassword,
+    );
   });
 });
