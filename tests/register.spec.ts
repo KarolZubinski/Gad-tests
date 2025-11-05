@@ -23,7 +23,7 @@ test.describe('Verify register', () => {
 
     //Assert
     const loginPage = new LoginPage(page);
-    await page.waitForURL('**/login/');
+    await loginPage.waitForPageToLoadUrl();
     const title = await loginPage.title();
     expect.soft(title).toContain('Login');
   });
