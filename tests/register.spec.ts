@@ -1,5 +1,6 @@
+import { LoginPage } from '../src/pages/login.page';
 import { RegisterPage } from '../src/pages/register.page';
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Verify register', () => {
   test('register with correct data @GAD_R03_01', async ({ page }) => {
@@ -19,5 +20,11 @@ test.describe('Verify register', () => {
       userEmail,
       userPassword,
     );
+
+    //Assert
+    const loginPage = new LoginPage(page);
+    await page.waitForURL('**/login/');
+    const title = await loginPage.title();
+    expect.soft(title).toContain('Login');
   });
 });
