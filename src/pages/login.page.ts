@@ -18,8 +18,4 @@ export class LoginPage extends BasePage {
     await this.userPasswordInput.fill(password);
     await this.loginButton.click();
   }
-
-  async waitForPageToLoadUrl(): Promise<void> {
-    this.page.waitForURL(this.url);
-  }
 }
