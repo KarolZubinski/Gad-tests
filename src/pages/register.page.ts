@@ -8,6 +8,7 @@ export class RegisterPage extends BasePage {
   userEmailInput = this.page.getByTestId('email-input');
   userPasswordInput = this.page.getByTestId('password-input');
   registerButton = this.page.getByTestId('register-button');
+  alertPopup = this.page.getByTestId('alert-popup');
 
   //registerError = this.page.getByTestId('login-error');
 
