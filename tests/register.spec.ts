@@ -1,4 +1,3 @@
-import { register } from 'module';
 import { RegisterUser } from '../src/models/user.model';
 import { LoginPage } from '../src/pages/login.page';
 import { RegisterPage } from '../src/pages/register.page';
@@ -35,13 +34,13 @@ test.describe('Verify register', () => {
 
     //Act
     await registerPage.goto();
-    await registerPage.register(
-      userFirstName,
-      userLastName,
-      userEmail,
-      userPassword,
-    );
-
+    // await registerPage.register(
+    //   registerUserData.userFirstName,
+    //   registerUserData.userLastName,
+    //   registerUserData.userEmail,
+    //   registerUserData.userPassword,
+    // );
+    await registerPage.register(registerUserData);
     const expectedAlertPopupText = 'User created';
 
     //Assert
@@ -53,7 +52,10 @@ test.describe('Verify register', () => {
     expect.soft(titleLogin).toContain('Login');
 
     //Assert
-    await loginPage.login(userEmail, userPassword);
+    await loginPage.login(
+      registerUserData.userEmail,
+      registerUserData.userPassword,
+    );
 
     const welcomePage = new WelcomePage(page);
     const titleWelcome = await welcomePage.title();
