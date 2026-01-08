@@ -1,3 +1,4 @@
+import { LoginUser } from '../src/models/user.model';
 import { LoginPage } from '../src/pages/login.page';
 import { WelcomePage } from '../src/pages/welcome.page';
 import { testUser1 } from '../src/test-data/user.data';
@@ -6,13 +7,17 @@ import { expect, test } from '@playwright/test';
 test.describe('Verify login', () => {
   test('login with correct credentials @GAD_R02_01', async ({ page }) => {
     //Arrange
-    const userEmail = testUser1.userEmail as string;
-    const userPassword = testUser1.userPassword as string;
+
+    const loginUserData: LoginUser = {
+      userEmail: testUser1.userEmail,
+      userPassword: testUser1.userPassword,
+    };
     const loginPage = new LoginPage(page);
 
     //Act
     await loginPage.goto();
-    await loginPage.login(userEmail, userPassword);
+    // await loginPage.login(loginUserData.userEmail, loginUserData.userPassword);
+    await loginPage.loginNEW(loginUserData);
 
     const welcomePage = new WelcomePage(page);
     const title = await welcomePage.title();
