@@ -73,7 +73,7 @@ test.describe('Verify register', () => {
       userPassword: faker.internet.password(),
     };
 
-    const expectedErrorText = 'Please provide a valid email address.';
+    const expectedErrorText = 'Please provide a valid email address';
     const registerPage = new RegisterPage(page);
 
     //Act
@@ -81,21 +81,6 @@ test.describe('Verify register', () => {
     await registerPage.register(registerUserData);
 
     //Assert
-    await expect(registerPage.alertPopup).toHaveText(expectedErrorText);
-
-    const loginPage = new LoginPage(page);
-    await loginPage.waitForPageToLoadUrl();
-    const titleLogin = await loginPage.title();
-    expect.soft(titleLogin).toContain('Login');
-
-    //Assert
-    await loginPage.login({
-      userEmail: registerUserData.userEmail,
-      userPassword: registerUserData.userPassword,
-    });
-
-    const welcomePage = new WelcomePage(page);
-    const titleWelcome = await welcomePage.title();
-    expect(titleWelcome).toContain('Welcome');
+    await expect(registerPage.emailErrorText).toHaveText(expectedErrorText);
   });
 });
