@@ -83,4 +83,28 @@ test.describe('Verify register', () => {
     //Assert
     await expect(registerPage.emailErrorText).toHaveText(expectedErrorText);
   });
+
+  test('non register with incorrect data - email not provided @GAD_R03_04', async ({
+    page,
+  }) => {
+    //Arrange
+
+    const expectedErrorText = 'This field is required';
+    const registerPage = new RegisterPage(page);
+
+    //Act
+    await registerPage.goto();
+    await registerPage.userFirstNameInput.fill(
+      faker.person.firstName().replace(/[^A-Za-z]/g, ''),
+    );
+    await registerPage.userLastNameInput.fill(
+      faker.person.lastName().replace(/[^A-Za-z]/g, ''),
+    );
+
+    await registerPage.userPasswordInput.fill(faker.internet.password());
+    await registerPage.registerButton.click();
+
+    //Assert
+    await expect(registerPage.emailErrorText).toHaveText(expectedErrorText);
+  });
 });
