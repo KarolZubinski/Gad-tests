@@ -1,3 +1,4 @@
+import { randomUser } from '../src/factories/user.factory';
 import { RegisterUser } from '../src/models/user.model';
 import { LoginPage } from '../src/pages/login.page';
 import { RegisterPage } from '../src/pages/register.page';
@@ -18,17 +19,12 @@ test.describe('Verify register', () => {
     // });
     // const userPassword = faker.internet.password();
 
-    const registerUserData: RegisterUser = {
-      userFirstName: faker.person.firstName().replace(/[^A-Za-z]/g, ''),
-      userLastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
-      userEmail: '',
-      userPassword: faker.internet.password(),
-    };
+    const registerUserData = randomUser();
 
-    registerUserData.userEmail = faker.internet.email({
-      firstName: registerUserData.userFirstName,
-      lastName: registerUserData.userLastName,
-    });
+    // registerUserData.userEmail = faker.internet.email({
+    //   firstName: registerUserData.userFirstName,
+    //   lastName: registerUserData.userLastName,
+    // });
 
     const registerPage = new RegisterPage(page);
 
