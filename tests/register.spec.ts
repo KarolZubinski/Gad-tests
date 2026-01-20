@@ -62,12 +62,8 @@ test.describe('Verify register', () => {
     page,
   }) => {
     //Arrange
-    const registerUserData: RegisterUser = {
-      userFirstName: faker.person.firstName().replace(/[^A-Za-z]/g, ''),
-      userLastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
-      userEmail: 'zly@email', // invalid email
-      userPassword: faker.internet.password(),
-    };
+    const registerUserData = randomUser();
+    registerUserData.userEmail = 'zlyemail@'; // invalid email
 
     const expectedErrorText = 'Please provide a valid email address';
     const registerPage = new RegisterPage(page);
