@@ -1,10 +1,11 @@
-import { randomUser } from '../src/factories/user.factory';
-import { RegisterUser } from '../src/models/user.model';
+import { randomUserData } from '../src/factories/user.factory';
 import { LoginPage } from '../src/pages/login.page';
 import { RegisterPage } from '../src/pages/register.page';
 import { WelcomePage } from '../src/pages/welcome.page';
+import { r } from '@faker-js/faker/dist/airline-CLphikKp';
 import { faker } from '@faker-js/faker/locale/en';
 import { expect, test } from '@playwright/test';
+import { register } from 'module';
 
 test.describe('Verify register', () => {
   test('register with correct data and login @GAD_R03_01 @GAD_R03_02 @GAD_R03_03', async ({
@@ -19,7 +20,7 @@ test.describe('Verify register', () => {
     // });
     // const userPassword = faker.internet.password();
 
-    const registerUserData = randomUser();
+    const registerUserData = randomUserData();
 
     // registerUserData.userEmail = faker.internet.email({
     //   firstName: registerUserData.userFirstName,
@@ -62,7 +63,7 @@ test.describe('Verify register', () => {
     page,
   }) => {
     //Arrange
-    const registerUserData = randomUser();
+    const registerUserData = randomUserData();
     registerUserData.userEmail = 'zlyemail@'; // invalid email
 
     const expectedErrorText = 'Please provide a valid email address';
@@ -82,18 +83,14 @@ test.describe('Verify register', () => {
     //Arrange
 
     const expectedErrorText = 'This field is required';
+    const registerUserData = randomUserData();
     const registerPage = new RegisterPage(page);
 
     //Act
     await registerPage.goto();
-    await registerPage.userFirstNameInput.fill(
-      faker.person.firstName().replace(/[^A-Za-z]/g, ''),
-    );
-    await registerPage.userLastNameInput.fill(
-      faker.person.lastName().replace(/[^A-Za-z]/g, ''),
-    );
-
-    await registerPage.userPasswordInput.fill(faker.internet.password());
+    await registerPage.userFirstNameInput.fill(registerUserData.userFirstName);
+    await registerPage.userLastNameInput.fill(registerUserData.userLastName);
+    await registerPage.userPasswordInput.fill(registerUserData.userPassword);
     await registerPage.registerButton.click();
 
     //Assert
