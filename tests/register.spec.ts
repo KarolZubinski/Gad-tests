@@ -2,10 +2,7 @@ import { randomUserData } from '../src/factories/user.factory';
 import { LoginPage } from '../src/pages/login.page';
 import { RegisterPage } from '../src/pages/register.page';
 import { WelcomePage } from '../src/pages/welcome.page';
-import { r } from '@faker-js/faker/dist/airline-CLphikKp';
-import { faker } from '@faker-js/faker/locale/en';
 import { expect, test } from '@playwright/test';
-import { register } from 'module';
 
 test.describe('Verify register', () => {
   test('register with correct data and login @GAD_R03_01 @GAD_R03_02 @GAD_R03_03', async ({
